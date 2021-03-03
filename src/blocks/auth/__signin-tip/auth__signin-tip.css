@@ -1,0 +1,12 @@
+.auth__signin-tip {
+  font-weight: normal;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  transition: 0.4s;
+  margin-top: 15px;
+}
+
+.auth__signin-tip:hover {
+  color: #ccc;
+}
