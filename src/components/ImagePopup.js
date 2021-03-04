@@ -15,7 +15,7 @@ function ImagePopup(props) {
       document.removeEventListener('keydown', closeByEscape);
     }
 
-  }, []);
+  }, [props.isOpen]);
 
   
   const closeByClick = (e) => {
@@ -28,7 +28,7 @@ function ImagePopup(props) {
     return () => {
       document.removeEventListener('mousedown', closeByClick);
     }
-  })
+  }, [props.isOpen])
 
   return(
   <div className={`popup popup_${props.name} ${props.isOpen ? 'popup_opened' : false}`}>
