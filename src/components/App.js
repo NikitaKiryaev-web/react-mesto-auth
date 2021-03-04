@@ -60,7 +60,7 @@ function App() {
       authFunc.checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          setEmail(res.email)
+          setEmail(res.data.email);
           history.push("/mesto");
         })
         .catch(err => console.log(err));
@@ -173,6 +173,13 @@ function App() {
     }
   }
 
+  function closeTooltipPopup() {
+    setIsTooltipPopupOpen(false);
+    if(isSucceed) {
+      history.push("/sign-in");
+    }
+  }
+
   return (
     <div className='page'>
       <div className="page__container">
@@ -209,7 +216,7 @@ function App() {
           linkText="Выйти"
           link="/sign-out"
           onHeaderLinkClick={onHeaderLinkClick}
-        />
+        />  
 
         <Main 
           onEditProfile={handleEditProfileClick}
@@ -225,37 +232,37 @@ function App() {
         </ProtectedRoute>
       </Switch>
     
-    {isEditProfilePopupOpen && <EditProfilePopup
+      <EditProfilePopup
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
         onUpdateUser={handleUpdateUser}
-      />}
+      />
      
-      {isAddPlacePopupOpen && <AddPlacePopup
+      <AddPlacePopup
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
         onAddPlace={handleAddPlaceSubmit}
 
-      />}
+      />
 
-      {isEditAvatarPopupOpen && <EditAvatarPopup
+      <EditAvatarPopup
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}
         onUpdateAvatar={handleUpdateAvatar}
-      />}
+      />
 
-      {isImagePopupOpen && <ImagePopup 
+      <ImagePopup 
         name='image'
         isOpen={isImagePopupOpen}
         onClose={closeAllPopups}
         card={selectedCard}
-      />}
+      />
 
-      {isTooltipPopupOpen && <InfoTooltip 
+      <InfoTooltip 
         isOpen={isTooltipPopupOpen}
         isLog={isSucceed}
-        onClose={closeAllPopups}
-      />}
+        onClose={closeTooltipPopup}
+      />
 
       </CurrentUserContext.Provider> 
     </div>
