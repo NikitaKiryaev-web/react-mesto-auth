@@ -61,7 +61,7 @@ function App() {
         .then((res) => {
           setIsLoggedIn(true);
           setEmail(res.data.email);
-          history.push("/mesto");
+          history.push("/");
         })
         .catch(err => console.log(err));
     };
@@ -145,7 +145,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setIsLoggedIn(true);
         setEmail(email);
-        history.push('/mesto');
+        history.push('/');
       })
       .catch(err => console.log(err));
   }
@@ -186,10 +186,6 @@ function App() {
 
       <CurrentUserContext.Provider value={currentUser}>
       <Switch>
-        <Route exact path="/">
-          {isLoggedIn ? <Redirect to="/mesto" /> : <Redirect to="/sign-in" />}
-        </Route>
-
         <Route path="/sign-up">
           <Header 
             link="/sign-in"
@@ -208,7 +204,7 @@ function App() {
           <Login handleLogin={handleLogin} />  
         </Route>
         <ProtectedRoute
-          path="/mesto"
+          exact path="/"
           isLoggedIn = {isLoggedIn}  
         >
         <Header
@@ -230,6 +226,14 @@ function App() {
 
         <Footer/>
         </ProtectedRoute>
+        <Route>
+            {isLoggedIn ? (
+              <Redirect to="/" />
+            ) : (
+                <Redirect to="/sign-in" />
+              )
+            }
+          </Route>
       </Switch>
     
       <EditProfilePopup

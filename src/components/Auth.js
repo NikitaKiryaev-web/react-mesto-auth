@@ -19,8 +19,6 @@ function Auth(props) {
     setEmail('');
   }
 
-  const tipText = props.needTip && props.children;
-
   return (
     <section className="auth">
       <h1 className="auth__title">{props.title}</h1>
