@@ -1,6 +1,7 @@
 {
-  "homepage": "https://nikitakiryaev-web.github.io/mesto-react/",
-  "name": "mesto-react",
+  "homepage": "https://nikitakiryaev-web.github.io/react-mesto-auth",
+  "name": "react-mesto-auth",
+  "author": "Nikita Kiryaev",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

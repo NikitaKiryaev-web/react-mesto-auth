@@ -30,7 +30,7 @@
 
 **Где посмотреть**
 
-- [Ссылка на gh pages](https://nikitakiryaev-web.github.io/mesto-react/)
+- [Ссылка на gh pages](https://nikitakiryaev-web.github.io/react-mesto-auth)
 
 **Планы на будущее**
 
