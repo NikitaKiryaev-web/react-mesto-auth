@@ -16,9 +16,9 @@ function Card(props) {
 
   const userInfo = useContext(CurrentUserContext);
 
-  const isOwn = props.card.owner._id === userInfo._id;
+  const isOwn = props.card.owner === userInfo._id;
   const cardDeleteButtonClassName = `photos__delete-button ${!isOwn && 'photos__delete-button_inactive'}`;
-  const isLiked = props.card.likes.some(item => item._id === userInfo._id);
+  const isLiked = props.card.likes.some(item => item === userInfo._id);
   const cardLikeButtonClassName = `photos__like-button ${isLiked && 'photos__like-button_active'}`;
 
   return(

@@ -2,7 +2,7 @@
  class Api {
   constructor(options) {
     this._url = options.url;
-    this._token = options.token;
+    this._token = options.token
   }
 
   _getOriginalResponse(res) {
@@ -16,7 +16,8 @@
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: {
-        authorization: this._token
+        authorization: this._token,
+        'Content-Type': 'application/json'
       }
     }
     )
@@ -30,7 +31,8 @@
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: {
-        authorization: this._token
+        authorization: this._token,
+        'Content-Type': 'application/json'
       }
     })
     .then(res => {
@@ -106,7 +108,7 @@
   }
 
   likeCard(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: {
         authorization: this._token,
@@ -119,7 +121,7 @@
   }
 
   unlikeCard(cardId) {
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: {
         authorization: this._token,
@@ -135,8 +137,8 @@
 }
 
  const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-19',
-  token: 'cdc2b984-82a4-4b35-acbd-93038325fc29'
+  url: 'https://api.kiryaev.students.nomoredomains.club',
+  token: `Bearer ${localStorage.getItem('jwt')}`
 })
 
 export default api;

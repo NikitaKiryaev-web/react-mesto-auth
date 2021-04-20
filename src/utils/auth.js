@@ -1,4 +1,4 @@
-export const url = "https://auth.nomoreparties.co";
+export const url = "https://api.kiryaev.students.nomoredomains.club";
 
 export const reg = (password, email) => {
   return fetch(`${url}/signup`, {
