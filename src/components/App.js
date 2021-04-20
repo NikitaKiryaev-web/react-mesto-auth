@@ -60,7 +60,7 @@ function App() {
       authFunc.checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           history.push("/");
         })
         .catch(err => console.log(err));
@@ -108,7 +108,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(item => item._id === currentUser._id);
+    const isLiked = card.likes.some(item => item === currentUser._id);
     const toggleLike = isLiked ? api.unlikeCard(card._id) : api.likeCard(card._id);
     toggleLike
       .then((res) => {
